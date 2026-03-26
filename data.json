@@ -1,0 +1,18 @@
+[
+  {
+    "varName": "Exigence 1",
+    "varCritical": "MINOR",
+    "varDescription": "Description 1"
+  },
+  {
+    "varName": "Exigence 2",
+    "varCritical": "MAJOR",
+    "varDescription": "Description 2"
+  },
+  {
+    "varName": "Exigence 3",
+    "varCritical": "CRITICAL",
+    "varDescription": "Description 3"
+  }
+]
+
