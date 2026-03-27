@@ -98,6 +98,7 @@ Après exécution, un fichier `report.html` est généré :
 
 * Détails des requêtes
 * Visualisation colorée
+<img width="1080" height="726" alt="image" src="https://github.com/user-attachments/assets/27a1bd1d-aa19-4b71-afc0-10db3c8ff7dc" />
 
 ---
 
