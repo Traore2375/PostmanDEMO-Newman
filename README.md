@@ -121,6 +121,7 @@ newman run SimpleDemo.postman_collection.json ^
 ```
 
 4. Publier le rapport HTML avec le plugin **HTML Publisher**
+<img width="1437" height="665" alt="image" src="https://github.com/user-attachments/assets/f9ca9e0e-dd03-489c-99bc-13dc1c15dd10" />
 
 ---
 
