@@ -89,7 +89,13 @@ newman run SimpleDemo.postman_collection.json ^
 Après exécution, un fichier `report.html` est généré :
 
 * Résumé des tests
+* <img width="1060" height="858" alt="image" src="https://github.com/user-attachments/assets/f30c06fd-614e-4385-bcb9-e41a42641919" />
+
 * Statistiques (succès / échec)
+* <img width="1040" height="607" alt="image" src="https://github.com/user-attachments/assets/098bc793-c334-495f-9923-8d5c76c1f5f1" />
+<img width="1110" height="971" alt="image" src="https://github.com/user-attachments/assets/750637f8-8a9e-4287-93d7-f740bb94bb76" />
+
+
 * Détails des requêtes
 * Visualisation colorée
 
