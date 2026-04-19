@@ -3,6 +3,12 @@ pipeline {
 
     stages {
 
+        stage('Prepare Folder') {
+            steps {
+                bat 'if not exist reports mkdir reports'
+            }
+        }
+
         stage('Run API Tests') {
             steps {
                 bat '''
@@ -22,8 +28,7 @@ pipeline {
                     reportFiles: 'newman-report.html',
                     reportName: 'Newman API Report',
                     keepAll: true,
-                    alwaysLinkToLastBuild: true,
-                    allowMissing: false
+                    alwaysLinkToLastBuild: true
                 ])
             }
         }
