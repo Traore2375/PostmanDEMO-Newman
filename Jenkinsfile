@@ -3,9 +3,10 @@ pipeline {
 
     stages {
 
-        stage('Prepare Folder') {
+        stage('Clean & Prepare') {
             steps {
-                bat 'if not exist reports mkdir reports'
+                bat 'if exist reports rmdir /s /q reports'
+                bat 'mkdir reports'
             }
         }
 
@@ -16,8 +17,15 @@ pipeline {
                 -e QA.postman_environment.json ^
                 -d data.json ^
                 -r cli,htmlextra ^
-                --reporter-htmlextra-export reports/newman-report.html
+                --reporter-htmlextra-export reports\\newman-report.html
                 '''
+            }
+        }
+
+        stage('Debug Files') {
+            steps {
+                bat 'dir'
+                bat 'dir reports'
             }
         }
 
@@ -26,9 +34,10 @@ pipeline {
                 publishHTML([
                     reportDir: 'reports',
                     reportFiles: 'newman-report.html',
-                    reportName: 'Newman API Report',
+                    reportName: 'Newman Report',
                     keepAll: true,
-                    alwaysLinkToLastBuild: true
+                    alwaysLinkToLastBuild: true,
+                    allowMissing: false
                 ])
             }
         }
