@@ -6,8 +6,8 @@ pipeline {
         stage('Run API Tests') {
             steps {
                 bat '''
-                newman run collection.json ^
-                -e environment.json ^
+                newman run SimpleDemo.postman_collection.json ^
+                -e QA.postman_environment.json ^
                 -d data.json ^
                 -r cli,htmlextra ^
                 --reporter-htmlextra-export newman-report.html
