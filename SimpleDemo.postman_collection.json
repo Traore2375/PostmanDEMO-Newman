@@ -89,7 +89,7 @@
           "script": {
             "exec": [
               "pm.test('Requirement created', () => {",
-              "  pm.response.to.have.status(200);",
+              "  pm.response.to.have.status(201);",
               "});",
               "",
               "const json = pm.response.json();",
@@ -136,7 +136,7 @@
           "script": {
             "exec": [
               "pm.test('Test case created', () => {",
-              "  pm.response.to.have.status(200);",
+              "  pm.response.to.have.status(201);",
               "});",
               "",
               "const json = pm.response.json();",
