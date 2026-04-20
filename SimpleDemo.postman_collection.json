@@ -1,218 +1,10 @@
 {
   "info": {
     "_postman_id": "91426adb-d881-48e3-b9f3-4dc54f3c11f3",
-    "name": "SimpleDemo",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "30949716",
-    "_collection_link": "https://go.postman.co/collection/30949716-91426adb-d881-48e3-b9f3-4dc54f3c11f3?source=collection_link"
+    "name": "SimpleDemo_CLEAN",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
-  "item": [
-    {
-      "name": "GETproject",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "exec": [
-              "// Dans Tests tab d'une requête\r",
-              "pm.test(\"Status code is 200\", function () {\r",
-              "    pm.response.to.have.status(200);\r",
-              "});\r",
-              "pm.test(\"Body has id\", function () {\r",
-              "    pm.expect(pm.response.json().id).to.exist;\r",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{url}}/projects?size=50&page=0",
-          "host": [
-            "{{url}}"
-          ],
-          "path": [
-            "projects"
-          ],
-          "query": [
-            {
-              "key": "size",
-              "value": "50"
-            },
-            {
-              "key": "page",
-              "value": "0"
-            }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "POSTcreate exigence",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "exec": [
-              "pm.collectionVariables.set(\"varName\", \"Exigence POC BDD\");\r",
-              "pm.collectionVariables.set(\"varCritical\", \"MINOR\");\r",
-              "pm.collectionVariables.set(\"varDescription\", \"Nouvelle pour créer un POC ALD\");"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "exec": [
-              "pm.test(\"Status code is 200\", function () {\r",
-              "    pm.response.to.have.status(200);\r",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n  \"_type\": \"requirement\",\r\n  \"parent\": {\r\n    \"_type\": \"requirement-folder\",\r\n    \"id\": 6440\r\n  },\r\n  \"current_version\": {\r\n    \"name\": \"{{varName}}\",\r\n    \"criticality\": \"{{varCritical}}\",\r\n    \"category\": {\r\n      \"code\": \"story01\"\r\n    },\r\n    \"status\": \"WORK_IN_PROGRESS\",\r\n    \"description\": \"{{varDescription}}\"\r\n  }\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{url}}/requirements",
-          "host": [
-            "{{url}}"
-          ],
-          "path": [
-            "requirements"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "POSTCreercasTest",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "exec": [
-              "pm.collectionVariables.set(\"varTestname\", \"Test Case 20200202\");"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "exec": [
-              "pm.test(\"Status code is 200\", function () {\r",
-              "    pm.response.to.have.status(200);\r",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n  \"_type\": \"test-case\",\r\n  \"name\": \"{{varTestname}}\",\r\n  \"parent\": {\r\n    \"_type\": \"project\",\r\n    \"id\": 14\r\n  }\r\n}\r\n",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{url}}/test-cases",
-          "host": [
-            "{{url}}"
-          ],
-          "path": [
-            "test-cases"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "PATCHupdatedexigenceName",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "exec": [
-              "pm.collectionVariables.set(\"Namerequirement\",\"POC BDD REQUIREMENT \");"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "exec": [
-              "pm.test(\"Status code is 200\", function () {\r",
-              "    pm.response.to.have.status(200);\r",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "request": {
-        "method": "PATCH",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n  \"_type\": \"requirement\",\r\n  \"current_version\": {\r\n    \"name\": \"{{Namerequirement}}\"\r\n  }\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{url}}/requirements/8489",
-          "host": [
-            "{{url}}"
-          ],
-          "path": [
-            "requirements",
-            "8489"
-          ]
-        }
-      },
-      "response": []
-    }
-  ],
+
   "auth": {
     "type": "bearer",
     "bearer": [
@@ -223,54 +15,178 @@
       }
     ]
   },
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "requests": {},
-        "exec": [
-          ""
-        ]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "requests": {},
-        "exec": [
-          ""
-        ]
-      }
-    }
-  ],
+
   "variable": [
+    { "key": "projectId", "value": "14" },
+    { "key": "requirementId", "value": "" },
+    { "key": "testCaseId", "value": "" },
+    { "key": "reqName", "value": "" },
+    { "key": "testCaseName", "value": "" }
+  ],
+
+  "item": [
     {
-      "key": "varName",
-      "value": ""
+      "name": "GET Projects",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{url}}/projects?size=50&page=0",
+          "host": ["{{url}}"],
+          "path": ["projects"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status 200', () => {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const json = pm.response.json();",
+              "",
+              "pm.test('Response valid', () => {",
+              "  pm.expect(json).to.not.be.null;",
+              "});"
+            ]
+          }
+        }
+      ]
     },
+
     {
-      "key": "varCritical",
-      "value": ""
+      "name": "POST Create Requirement",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{url}}/requirements",
+          "host": ["{{url}}"],
+          "path": ["requirements"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"_type\": \"requirement\",\n  \"parent\": {\n    \"_type\": \"requirement-folder\",\n    \"id\": 6440\n  },\n  \"current_version\": {\n    \"name\": \"{{reqName}}\",\n    \"criticality\": \"MINOR\",\n    \"status\": \"WORK_IN_PROGRESS\",\n    \"description\": \"Auto generated requirement\"\n  }\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "pm.collectionVariables.set('reqName', 'REQ_' + Date.now() + '_' + Math.floor(Math.random()*1000));"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Requirement created', () => {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const json = pm.response.json();",
+              "",
+              "pm.expect(json.id).to.exist;",
+              "pm.collectionVariables.set('requirementId', json.id);"
+            ]
+          }
+        }
+      ]
     },
+
     {
-      "key": "varDescription",
-      "value": ""
+      "name": "POST Create Test Case",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{url}}/test-cases",
+          "host": ["{{url}}"],
+          "path": ["test-cases"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"_type\": \"test-case\",\n  \"name\": \"{{testCaseName}}\",\n  \"parent\": {\n    \"_type\": \"project\",\n    \"id\": {{projectId}}\n  }\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "pm.collectionVariables.set('testCaseName', 'TC_' + Date.now() + '_' + Math.floor(Math.random()*1000));"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Test case created', () => {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const json = pm.response.json();",
+              "",
+              "pm.expect(json.id).to.exist;",
+              "pm.collectionVariables.set('testCaseId', json.id);"
+            ]
+          }
+        }
+      ]
     },
+
     {
-      "key": "varTestname",
-      "value": ""
-    },
-    {
-      "key": "varNamerequirement",
-      "value": ""
-    },
-    {
-      "key": "Namerequirement",
-      "value": ""
+      "name": "PATCH Requirement",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{url}}/requirements/{{requirementId}}",
+          "host": ["{{url}}"],
+          "path": ["requirements", "{{requirementId}}"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"_type\": \"requirement\",\n  \"current_version\": {\n    \"name\": \"UPDATED_{{reqName}}\"\n  }\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Requirement updated', () => {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const json = pm.response.json();",
+              "",
+              "if (json && json.current_version) {",
+              "  pm.expect(json.current_version.name).to.include('UPDATED_');",
+              "}"
+            ]
+          }
+        }
+      ]
     }
   ]
 }
